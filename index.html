@@ -18,18 +18,10 @@ Make sure exception details are logged and handed to developpers:
   <li>and/or have a logger sending a mail (depending on your expected volume)</li>
   <li>and/or use an APM tool such as Azure Application Insights, AWS CloudWatch, Elasticsearch APM</li>
 </ul>
-DON'T :
 <ul>
-  <li>log exceptions to a file where they will be forgotten</li>
-  <li>hide exceptions using an empty catch block
-     <pre>try
-{
-  // code
-}
-catch(Exception)
-{
-}
-</pre>
+  <li>DON'T log exceptions to a file where they will be forgotten</li>
+  <li>DON'T hide exceptions using an empty catch block
+      <script src="https://gist.github.com/PatriceSc/09cc407fcecc9e9bd3fb08eb49a41fa5.js"></script>
     </ul>
     <ul>
   <li>catch exception locally <strong>ONLY</strong> if it clearly brings some more value. In particular it can be counter productive if:
