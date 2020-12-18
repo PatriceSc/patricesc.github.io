@@ -1,16 +1,16 @@
 <html>
   <head>
     <style>
-      body {font-family:Lato,Helvetica,Arial,sans-serif};
+      body {font-family:Lato,Helvetica,Arial,sans-serif;line-height:1.5em};
     </style>
   </head>
   <body>
     <h1>Exception handling</h1>
 Use a global exception handler showing a generic error message to users: 
 <ul>
-  <li>ASP.NET Web Forms:</li>
-  <li>ASP.NET MVC 5: </li>
-  <li>ASP.NET Core: </li>
+  <li><a href="https://docs.microsoft.com/en-us/aspnet/web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling">ASP.NET Web Forms</a></li>
+  <li>pour <a href="https://www.tutorialsteacher.com/mvc/exception-handling-in-mvc">ASP.NET MVC 5</a></li>
+  <li>pour <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-5.0">ASP.NET Core</a></li>
 </ul>
 Make sure exception details are logged and handed to developpers:
 <ul>
@@ -18,7 +18,6 @@ Make sure exception details are logged and handed to developpers:
   <li>and/or have a logger sending a mail (depending on your expected volume)</li>
   <li>and/or use an APM tool such as Azure Application Insights, AWS CloudWatch, Elasticsearch APM</li>
 </ul>
-
 DON'T :
 <ul>
   <li>log exceptions to a file where they will be forgotten</li>
@@ -38,14 +37,14 @@ catch(Exception)
         <li>you end up in confusing users or even yourself about the fact that your app DOES not behave as expetted</li>
         <li>if not prepared to this, your app may fail later anyway. A common problem is for example turning an exception into a status code or a null object, but not being prepared for this situation in the code that runs next.</li>
       </ul>
-        IF you have a commpelling reason for that make sure to still log immediately the original exception
+        IF you have a commpelling reason, catch the exception type you want to handle rather than Exception, you likely still want to log the original exception
    </li>
    <li>AVOID to throw exception as part of your normal control flow. Prefer :
       <ul>
          <li>the TyXXX pattern if you really don"t care about the exception, see DateTime.TryParse, decimal.TryParse</li>
-         <li>a validation model such as <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0">this</a>, in much earlier version validation was handled through exception but MS moved way from that approach</li>
+         <li>an explicit structure such as for server side <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0">model validation</a>, in much earlier user input validation was handled through exception but MS moved away from that approach</li>
      </ul>
   </li>
 </div>
-  </body>
-    </html>
+</body>
+</html>
