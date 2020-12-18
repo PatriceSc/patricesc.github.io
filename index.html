@@ -1,23 +1,22 @@
 <h1>Exception handling</h1>
-Use a global exception handler showing a generic error message to usees: 
+Use a global exception handler showing a generic error message to users: 
 <ul>
   <li>ASP.NET Web Forms:</li>
   <li>ASP.NET MVC 5: </li>
   <li>ASP.NET Core: </li>
 </ul>
-Make sure exception details are loogged and handed quuickly to developpers:
+Make sure exception details are logged and handed to developpers:
 <ul>
-  <li<by default it goes to the event log, you may want to have an alerting system in place for those events</li>
-<li>and/or have a logger sending a mail (depending on your expected volume)</li>
-  <li<and use an AOM tool such as Azure Application IOnsights, AWS CloudWatch, Elasticsearch APM</li>
+  <li>by default it goes to the event log, you may want to have an alerting system in place for those events</li>
+  <li>and/or have a logger sending a mail (depending on your expected volume)</li>
+  <li>and/or use an APM tool such as Azure Application Insights, AWS CloudWatch, Elasticsearch APM</li>
 </ul>
-<div> style="background-color:hsl(0,100%,50%)">
+<div style="background-color:hsl(0,100%,50%)">
 DON'T :
-  <ul><li>lof exceptions to a file where they will be forgotten</li>
-   <li>hide exceptions using an empty catch block</li>
-     <pre>
-<heeader>Hide exceptions using an exception</header>
-try
+<ul>
+  <li>log exceptions to a file where they will be forgotten</li>
+  <li>hide exceptions using an empty catch block
+     <pre>try
 {
   // code
 }
@@ -25,16 +24,19 @@ catch(Exception)
 {
 }
 </pre>
-    <li>catch exception locally O?NLY if it clearly brings sme value in addition to telling your users you DO have a problem and to log exception details. In particular it can be counter productive if:
+  </li>
+  <li>catch exception locally <strong>ONLY</strong> if it clearly brings some more value. In particular it can be counter productive if:
       <ul>
-        <li>you end up in confusing users or even yourself about the fact that your app DOES have a problem that needs to be investigated and possibly fixed</li>
-        <li>it can make add copmplexity to the code that follows and that needs to be prepared to an unexpected condition. A usual problem is for example turing an exeption into a staus code that is not later checked or to return a null object that your code is not prepared to deal with</li>
-      <:/ul>
-        IF you have a commpelling reason for that make sure to still log immediately the exception
-        </li>
-        <li>throw exception as part of your normal control flow. Prefer :
-          <ul>
-            <li>the TyXXX pattern if you really don"t care about the exception, see DateTime.TryParse, decimal.TryParse
-            <li>a validation model such as <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0">this</a>, in much earlier version validation was handled through exception but MS moved way from that approach</li>
+        <li>you end up in confusing users or even yourself about the fact that your app DOES not behave as expetted</li>
+        <li>if not prepared to this, your app may fail later anyway. A common problem is for example turning an exception into a status code or a null object, but not being prepared for this situation in the code that runs next.</li>
+      </ul>
+        IF you have a commpelling reason for that make sure to still log immediately the original exception
+   </li>
+   <li>AVOID to throw exception as part of your normal control flow. Prefer :
+      <ul>
+         <li>the TyXXX pattern if you really don"t care about the exception, see DateTime.TryParse, decimal.TryParse</li>
+         <li>a validation model such as <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0">this</a>, in much earlier version validation was handled through exception but MS moved way from that approach</li>
+     </ul>
+  </li>
 </div>
       
