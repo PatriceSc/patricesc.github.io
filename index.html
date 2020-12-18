@@ -1,4 +1,11 @@
-<h1>Exception handling</h1>
+<html>
+  <head>
+    <style>
+      body {font-family:Lato,Helvetica,Arial,sans-serif};
+    </style>
+  </head>
+  <body>
+    <h1>Exception handling</h1>
 Use a global exception handler showing a generic error message to users: 
 <ul>
   <li>ASP.NET Web Forms:</li>
@@ -11,7 +18,7 @@ Make sure exception details are logged and handed to developpers:
   <li>and/or have a logger sending a mail (depending on your expected volume)</li>
   <li>and/or use an APM tool such as Azure Application Insights, AWS CloudWatch, Elasticsearch APM</li>
 </ul>
-<div style="background-color:hsl(0,100%,50%)">
+
 DON'T :
 <ul>
   <li>log exceptions to a file where they will be forgotten</li>
@@ -24,7 +31,8 @@ catch(Exception)
 {
 }
 </pre>
-  </li>
+    </ul>
+    <ul>
   <li>catch exception locally <strong>ONLY</strong> if it clearly brings some more value. In particular it can be counter productive if:
       <ul>
         <li>you end up in confusing users or even yourself about the fact that your app DOES not behave as expetted</li>
@@ -39,4 +47,5 @@ catch(Exception)
      </ul>
   </li>
 </div>
-      
+  </body>
+    </html>
